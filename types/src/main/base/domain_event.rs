@@ -7,7 +7,7 @@ use smart_default::SmartDefault;
 use time::OffsetDateTime;
 use uuid::Uuid;
 
-#[derive(new, Debug, Clone, PartialEq, SmartDefault, Serialize, Deserialize)]
+#[derive(new, Debug, Clone, PartialEq, SmartDefault, Serialize, Deserialize, Hash, Eq)]
 pub struct DomainEvent {
     #[new(value = "EventId::new()")]
     #[default(Default::default())]
