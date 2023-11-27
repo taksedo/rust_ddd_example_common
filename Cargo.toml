@@ -25,6 +25,7 @@ rstest = "0.18.2"
 rand = "0.8.5"
 actix-web = "4.3.1"
 lazy_static = "1.4.0"
+smart-default = "0.7.1"
 
 types = { path = "types" }
 
