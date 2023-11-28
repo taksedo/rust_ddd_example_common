@@ -3,14 +3,17 @@ use std::fmt::Debug;
 use derive_new::new;
 use enum_dispatch::enum_dispatch;
 use serde::{Deserialize, Serialize};
+use smart_default::SmartDefault;
 use time::OffsetDateTime;
 use uuid::Uuid;
 
-#[derive(new, Debug, Clone, PartialEq)]
+#[derive(new, Debug, Clone, PartialEq, SmartDefault, Serialize, Deserialize, Hash, Eq)]
 pub struct DomainEvent {
     #[new(value = "EventId::new()")]
+    #[default(Default::default())]
     pub id: EventId,
     #[new(value = "OffsetDateTime::now_utc()")]
+    #[default(_code = "OffsetDateTime::now_utc()")]
     created: OffsetDateTime,
 }
 
@@ -26,7 +29,7 @@ pub trait DomainEventTrait: Debug {}
 // todo возможно понадобится
 // serialize_trait_object!(DomainEventTrait<T>);
 
-impl DomainEventTrait for DomainEvent {}
+// impl DomainEventTrait for DomainEvent {}
 
 // impl dyn DomainEventTrait + 'static {
 //     pub fn downcast_ref<T: DomainEventTrait + 'static>(&self) -> Option<&T> {
