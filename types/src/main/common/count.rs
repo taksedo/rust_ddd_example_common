@@ -5,7 +5,7 @@ use crate::main::base::value_object::ValueObject;
 #[derive(Debug, Clone, PartialEq, Copy, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Count {
-    value: i32,
+    pub value: i32,
 }
 
 #[allow(clippy::absurd_extreme_comparisons)]
