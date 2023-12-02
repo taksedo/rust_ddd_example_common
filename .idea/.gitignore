@@ -1,8 +1,10 @@
 # Default ignored files
 /shelf/
+/sonarlint
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+/sonarlint/securityhotspotstore/7/e/7ef0b571808d9ae1ff3dd59d4ba1617002883685
