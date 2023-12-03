@@ -2,7 +2,7 @@ use serde_derive::{Deserialize, Serialize};
 
 use crate::main::base::value_object::ValueObject;
 
-#[derive(Debug, Clone, PartialEq, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Eq, PartialEq, Copy, Serialize, Deserialize)]
 #[non_exhaustive]
 pub struct Count {
     pub value: i32,
