@@ -17,6 +17,7 @@ enum_access.workspace = true
 rstest.workspace = true
 rand.workspace = true
 smart-default.workspace = true
+fake.workspace = true
 
 [dependencies.uuid]
 version = "1.5.0"
