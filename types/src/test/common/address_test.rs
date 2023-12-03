@@ -25,7 +25,7 @@ fn create_address_empty_string(#[values("", " ")] value: &str) {
 }
 
 #[rstest]
-fn create_address_empty_string(#[values(0, - 1)] value: i8) {
+fn create_address_non_positive_building(#[values(0, - 1)] value: i8) {
     let result = Address::try_from(("Street", value));
     assert!(result.is_err());
     assert_eq!(result.unwrap_err(), NonPositiveBuilding)
