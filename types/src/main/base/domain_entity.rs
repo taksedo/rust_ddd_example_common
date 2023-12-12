@@ -6,7 +6,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::main::base::value_object::ValueObject;
 
-#[derive(new, Clone, Default, Derivative, Serialize, Deserialize)]
+#[derive(new, Clone, Default, Derivative, Serialize, Deserialize, Ord, PartialOrd, Eq)]
 #[derivative(PartialEq, Debug)]
 pub struct DomainEntity<T, Event> {
     pub id: T,
@@ -35,7 +35,7 @@ impl<Event: Clone, T> DomainEntityTrait<Event> for DomainEntity<T, Event> {
     }
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, Eq, PartialEq, Default)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, Eq, PartialEq, Default, Ord, PartialOrd)]
 pub struct Version {
     value: i64,
 }
