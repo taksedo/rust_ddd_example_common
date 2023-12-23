@@ -11,7 +11,7 @@ use serde::{Deserialize, Serialize};
 lazy_static! {
     pub static ref BASE_URL: String = {
         let lock: OnceLock<String> = OnceLock::new();
-        lock.get_or_init(|| env::var("HOST_URL").expect("Variable 'HOST_URL' not found"))
+        lock.get_or_init(|| env::var("HTTP_HOST_URL").expect("Variable 'HTTP_HOST_URL' not found"))
             .to_string()
     };
 }
