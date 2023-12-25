@@ -1,3 +1,3 @@
 use std::sync::{Arc, Mutex};
 
-type AM<T> = Arc<Mutex<T>>;
+pub type AM<T> = Arc<Mutex<T>>;
