@@ -7,6 +7,7 @@ use actix_web::HttpResponse;
 use derive_new::new;
 use lazy_static::lazy_static;
 use serde::{Deserialize, Serialize};
+use utoipa::{ToResponse, ToSchema};
 
 lazy_static! {
     pub static ref BASE_URL: String = {
@@ -35,7 +36,7 @@ pub fn resource_not_found() -> HttpResponse {
     let error_response = GenericErrorResponse::new(
         not_found_type_url(),
         "Resource not found".to_string(),
-        (StatusCode::NOT_FOUND).as_u16(),
+        StatusCode::NOT_FOUND.as_u16(),
     );
 
     HttpResponse::NotFound().json(error_response)
@@ -48,7 +49,7 @@ pub fn rest_business_error(title: &str, code: &str) -> HttpResponse {
             .unwrap()
             .to_string(),
         title.to_string(),
-        (StatusCode::UNPROCESSABLE_ENTITY).as_u16(),
+        StatusCode::UNPROCESSABLE_ENTITY.as_u16(),
     );
     HttpResponse::UnprocessableEntity().json(error_response)
 }
@@ -63,7 +64,7 @@ pub fn no_content() -> HttpResponse {
     HttpResponse::new(StatusCode::NO_CONTENT)
 }
 
-#[derive(new, Debug, Serialize, Deserialize)]
+#[derive(new, Debug, Serialize, Deserialize, ToSchema, ToResponse)]
 pub struct GenericErrorResponse {
     #[serde(rename(serialize = "type", deserialize = "type"))]
     pub response_type: String,
@@ -97,7 +98,7 @@ pub fn to_invalid_param_bad_request(error_list: Arc<Mutex<Vec<ValidationError>>>
             .unwrap()
             .to_string(),
         "Bad request".to_string(),
-        (StatusCode::BAD_REQUEST).as_u16(),
+        StatusCode::BAD_REQUEST.as_u16(),
     );
 
     error_list
