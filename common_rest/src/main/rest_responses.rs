@@ -113,7 +113,7 @@ pub fn to_invalid_param_bad_request(error_list: Arc<Mutex<Vec<ValidationError>>>
     HttpResponse::BadRequest().json(error_response)
 }
 
-pub fn get_json_from_response(resp: HttpResponse) -> String {
+pub fn get_json_from_http_response(resp: HttpResponse) -> String {
     let body = resp.into_body().try_into_bytes().unwrap();
     std::str::from_utf8(&body).unwrap().to_owned()
 }

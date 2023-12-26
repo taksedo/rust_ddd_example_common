@@ -1,9 +1,13 @@
-use fake::Fake;
-use fake::faker::address::en::{BuildingNumber, StreetName};
+use fake::{
+    faker::address::en::{BuildingNumber, StreetName},
+    Fake,
+};
 use rstest::rstest;
 
-use crate::main::common::address::Address;
-use crate::main::common::address::CreateAddressError::{EmptyString, NonPositiveBuilding};
+use crate::main::common::address::{
+    Address,
+    CreateAddressError::{EmptyString, NonPositiveBuilding},
+};
 
 #[test]
 fn create_address_success() {

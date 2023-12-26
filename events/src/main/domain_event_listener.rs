@@ -1,5 +1,4 @@
-use std::fmt::Debug;
-use std::mem::Discriminant;
+use std::{fmt::Debug, mem::Discriminant};
 
 pub trait DomainEventListener<Event: Clone>: Debug + Send {
     fn event_type(&self) -> Discriminant<Event>;

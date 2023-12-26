@@ -1,5 +1,4 @@
-use rand::Rng;
-use rand::thread_rng;
+use rand::{thread_rng, Rng};
 
 use crate::main::common::count::Count;
 
