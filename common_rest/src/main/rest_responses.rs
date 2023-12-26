@@ -78,7 +78,7 @@ pub struct GenericErrorResponse {
     pub invalid_params: Vec<ValidationError>,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, ToSchema)]
 pub struct ValidationError {
     pub message: String,
 }
