@@ -1,9 +1,13 @@
-use std::env;
-use std::sync::{Arc, Mutex, OnceLock};
+use std::{
+    env,
+    sync::{Arc, Mutex, OnceLock},
+};
 
-use actix_web::http::StatusCode;
-use actix_web::http::Uri;
-use actix_web::HttpResponse;
+use actix_web::{
+    body::MessageBody,
+    http::{StatusCode, Uri},
+    HttpResponse,
+};
 use derive_new::new;
 use lazy_static::lazy_static;
 use serde::{Deserialize, Serialize};
@@ -107,4 +111,9 @@ pub fn to_invalid_param_bad_request(error_list: Arc<Mutex<Vec<ValidationError>>>
         .iter()
         .for_each(|error| error_response.invalid_params.push(error.to_owned()));
     HttpResponse::BadRequest().json(error_response)
+}
+
+pub fn get_json_from_response(resp: HttpResponse) -> String {
+    let body = resp.into_body().try_into_bytes().unwrap();
+    std::str::from_utf8(&body).unwrap().to_owned()
 }
