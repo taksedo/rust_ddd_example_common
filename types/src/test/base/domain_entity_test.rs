@@ -1,10 +1,11 @@
-use std::any::Any;
-use std::fmt::Debug;
+use std::{any::Any, fmt::Debug};
 
 use derive_new::new;
 
-use crate::main::base::domain_entity::{DomainEntity, DomainEntityTrait, Version};
-use crate::main::base::domain_event::DomainEventTrait;
+use crate::main::base::{
+    domain_entity::{DomainEntity, DomainEntityTrait, Version},
+    domain_event::DomainEventTrait,
+};
 
 #[test]
 #[allow(non_snake_case)]

@@ -1,7 +1,9 @@
 use serde_derive::{Deserialize, Serialize};
 
-use crate::main::base::value_object::ValueObject;
-use crate::main::common::address::CreateAddressError::{EmptyString, NonPositiveBuilding};
+use crate::main::{
+    base::value_object::ValueObject,
+    common::address::CreateAddressError::{EmptyString, NonPositiveBuilding},
+};
 
 #[derive(Debug, Clone, Eq, PartialEq, Default, Serialize, Deserialize)]
 pub struct Address {
@@ -28,7 +30,10 @@ impl TryFrom<(&str, i16)> for Address {
         match value {
             (x, _) if x.is_empty() || x == " " => Err(EmptyString),
             (_, x) if x <= 0 => Err(NonPositiveBuilding),
-            _ => Ok(Self { street: value.0.to_owned(), building: value.1 })
+            _ => Ok(Self {
+                street: value.0.to_owned(),
+                building: value.1,
+            }),
         }
     }
 }
